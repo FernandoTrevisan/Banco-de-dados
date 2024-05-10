@@ -1,0 +1,89 @@
+PACIENTE (
+    ID [PK],
+    Data_nasc,
+    Genero,
+    Nome
+)
+
+ENFERMEIRO (
+    ID [PK],
+    Nome,
+    Coren
+)
+
+MEDICO (
+    ID [PK],
+    CRM,
+    Especialidade,
+    Nome
+)
+
+FARMACEUTICO (
+    ID [PK],
+    CRF,
+    Nome
+)
+
+TRIAGEM (
+    ID [PK],
+    Data_triagem,
+    ID_PACIENTE [FK],
+    ID_ENFERMEIRO [FK]
+)
+
+CONSULTA (
+    ID [PK],
+    Data_consulta,
+    ID_TRIAGEM [FK],
+    ID_MEDICO [FK]
+)
+
+RECEITA (
+    ID [PK],
+    Data_receita,
+    ID_CONSULTA [FK],
+    ID_FARMACEUTICO [FK],
+    ID_ENFERMEIRO [FK]
+)
+
+MEDICAMENTO (
+    ID [PK],
+    Data_validade,
+    Apresentacao,
+    Descricao,
+    ID_FARMACIA [FK]
+)
+
+
+RECEITA_MEDICAMENTO_assoc (
+    ID_RECEITA [FK, PK],
+    ID_MEDICAMENTO [FK, PK]
+)
+
+FARMACIA (
+    ID [PK],
+    Nome
+)
+
+FARMACIA_MEDICAMENTO_assoc (
+    ID_MEDICAMENTO [FK, PK]
+    ID_FARMACIA [FK, PK],
+)
+
+FARMACEUTICO_FARMACIA_assoc (
+    ID_FARMACEUTICO [FK, PK],
+    ID_FARMACIA [FK, PK]
+)
+
+INTERNACAO (
+    ID [PK],
+    Data_internacao,
+    ID_CONSULTA [FK]
+)
+
+VISITA_MEDICA (
+    ID [PK],
+    Data_visita,
+    ID_MEDICO [FK],
+    ID_INTERNACAO [FK]
+)
